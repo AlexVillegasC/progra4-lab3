@@ -11,13 +11,10 @@ export default function Login() {
     
     const emailRef = useRef()
     const passwordRef = useRef()
-    const [error, setError] = useState('')
-    
+    const [error, setError] = useState('')    
     
     const { login } = useLogin()
-    
-   
-
+      
     const handleLogin = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
@@ -27,8 +24,7 @@ export default function Login() {
             setError("Credenciales incorrectas");
         }
         else
-        {
-            alert("Bienvenido" + email)    
+        {            
             setUser(email)        
         }
     }
@@ -36,23 +32,31 @@ export default function Login() {
 
     return (
         <>        
-              <h2>Login</h2>                      
-              <div>
-                <input 
-                type="email"
-                placeholder='Correo'
-                ref={emailRef}
-                />
-                <br/>
-                <input
-                type="password"
-                placeholder='Contraseña'
-                ref={passwordRef}
-                />
-                <br/>
-                <button onClick={handleLogin}>Ingresar</button>
-                { error && <p style={{ color: "red" }}>{error}</p> }
-              </div>                     
+         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Login</h2>
+<div className="bg-white p-6 rounded-lg shadow-md max-w-sm mx-auto">
+  <input 
+    type="email"
+    placeholder="Correo"
+    ref={emailRef}
+    className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+  />
+  <br/>
+  <input
+    type="password"
+    placeholder="Contraseña"
+    ref={passwordRef}
+    className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+  />
+  <br/>
+  <button
+    onClick={handleLogin}
+    className="w-full bg-indigo-600 text-white font-medium py-2 rounded-md hover:bg-indigo-700 transition-colors"
+  >
+    Ingresar
+  </button>
+  {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+</div>
+            
         </>
     )
 }
