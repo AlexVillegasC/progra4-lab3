@@ -10,6 +10,7 @@ import {
   import HomePage from "./Pages/HomePage";
   import AboutPage from "./Pages/AboutPage";
   import LoginPage from "./Pages/LoginPage";
+import UsersPage from "./Pages/UsersPage";
   
   // 1) Sólo layout en el root, sin path
   const rootRoute = createRootRoute({
@@ -28,6 +29,13 @@ import {
     path: "/about",
     component: AboutPage,
   });
+
+  const usersRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: "/users",
+    component: UsersPage, 
+  });
+  
   
   const loginRoute = createRoute({
     getParentRoute: () => rootRoute,
@@ -36,7 +44,7 @@ import {
   });
   
   // 3) Anidar las rutas
-  rootRoute.addChildren([homeRoute, aboutRoute, loginRoute]);
+  rootRoute.addChildren([homeRoute, aboutRoute, loginRoute, usersRoute]);
   
   // 4) Crear y exportar el router correctamente
   export const router = createRouter({
